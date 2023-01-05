@@ -5,6 +5,7 @@ export const types = gql`
     id: ID!
     name: String!
     expiration_date: String!
+    created_at: String!
     storage: String
     description: String
     quantity: String
@@ -22,19 +23,22 @@ export const types = gql`
   }
 
   type User {
-    user_id: ID!
+    id: ID!
     username: String!
     email: String!
     products: [Product]
+    created_at: String!
+    updated_at: String!
   }
 
   type Query {
-    getUser(id: String): User
-    getProducts(userId: String): [Product]
+    getUser(id: String): User!
+    getUsers: [User]
+    getProducts(userId: String): [Product!]!
   }
 
   type Mutation {
-    setUser(input: ProspectData!): ResolveType!
+    setUser(input: ProspectData!): User!
     #   addProduct()
     #   removeProduct()
   }

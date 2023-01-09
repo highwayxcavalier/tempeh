@@ -3,9 +3,11 @@ export interface Product {
   name: string;
   expiration_date: string;
   created_at: Date;
-  storage?: string;
+  storage?: Storage;
   description?: string;
   quantity: string;
   tags: string[];
   image?: string;
 }
+
+type Storage = 'fridge' | 'cellar' | 'freezer' | 'pantry';

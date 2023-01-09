@@ -1,16 +1,18 @@
 import { productResolvers } from './productResolvers.ts';
 import { userResolvers } from './userResolvers.ts';
-const { getProducts, addProduct } = productResolvers;
-const { getUser, setUser, getUsers } = userResolvers;
+const { product, products, addProduct, deleteProduct } = productResolvers;
+const { user, addUser, users } = userResolvers;
 
 export const resolvers = {
   Query: {
-    getProducts,
-    getUser,
-    getUsers,
+    product,
+    products,
+    user,
+    users,
   },
   Mutation: {
-    //     addProduct,
-    setUser,
+    addProduct,
+    addUser,
+    deleteProduct,
   },
 };

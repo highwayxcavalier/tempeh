@@ -9,13 +9,26 @@ export const types = gql`
     storage: String
     description: String
     quantity: String
-    tags: [String!]!
+    tags: [String]
     image: String
   }
 
   input ProspectData {
     username: String!
     email: String!
+  }
+
+  input ProductInput {
+    name: String!
+    expiration_date: String!
+    storage: String
+    quantity: Int!
+    tags: [String]
+    description: String
+  }
+
+  input DeleteInput {
+    id: ID!
   }
 
   type ResolveType {
@@ -32,14 +45,15 @@ export const types = gql`
   }
 
   type Query {
-    getUser(id: String): User!
-    getUsers: [User]
-    getProducts(userId: String): [Product!]!
+    user(id: ID!): User!
+    users: [User]
+    product(id: ID!): Product
+    products: [Product!]!
   }
 
   type Mutation {
-    setUser(input: ProspectData!): User!
-    #   addProduct()
-    #   removeProduct()
+    addUser(input: ProspectData!): User!
+    addProduct(input: ProductInput): Product!
+    deleteProduct(input: DeleteInput!): ResolveType!
   }
 `;

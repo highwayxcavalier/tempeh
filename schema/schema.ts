@@ -22,7 +22,7 @@ export const types = gql`
     name: String!
     expiration_date: String!
     storage: String
-    quantity: Int!
+    quantity: String!
     tags: [String]
     description: String
   }

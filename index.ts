@@ -3,6 +3,7 @@ import { Application, Router } from 'https://deno.land/x/oak/mod.ts';
 import { types } from './schema/schema.ts';
 import { resolvers } from './resolvers/index.ts';
 import mongoose from 'npm:mongoose@6.7';
+import { oakCors } from 'https://deno.land/x/cors/mod.ts';
 
 const app = new Application();
 
@@ -12,6 +13,7 @@ const GraphQLService = await applyGraphQL<Router>({
   resolvers,
 });
 
+app.use(oakCors()); // Enable CORS for All Routes
 app.use(GraphQLService.routes(), GraphQLService.allowedMethods());
 
 try {
@@ -21,5 +23,5 @@ try {
   console.error(error);
 }
 
-console.log('Server start at http://localhost:8080');
+console.log('Server start at http://192.168.0.211:8080');
 await app.listen({ port: 8080 });

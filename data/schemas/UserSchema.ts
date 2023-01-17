@@ -3,10 +3,11 @@ import { productSchema } from './ProductSchema.ts';
 
 const { Schema } = mongoose;
 
-export const userSchema = new Schema({
-  username: String,
-  email: String,
-  products: [productSchema],
-  created_at: Date,
-  updated_at: Date,
-});
+export const userSchema = new Schema(
+  {
+    username: String,
+    email: String,
+    products: [productSchema],
+  },
+  { timestamps: true }
+);

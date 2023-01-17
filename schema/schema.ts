@@ -5,12 +5,14 @@ export const types = gql`
     id: ID!
     name: String!
     expiration_date: String!
-    created_at: String!
+    createdAt: String!
+    updatedAt: String!
     storage: String
     description: String
     quantity: String
     tags: [String]
     image: String
+    isExpired: Boolean!
   }
 
   input ProspectData {
@@ -40,8 +42,8 @@ export const types = gql`
     username: String!
     email: String!
     products: [Product]
-    created_at: String!
-    updated_at: String!
+    createdAt: String!
+    updatedAt: String!
   }
 
   type Query {

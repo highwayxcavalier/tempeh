@@ -5,8 +5,8 @@ export interface User {
   username: string;
   email: string;
   products: Product[];
-  created_at: Date;
-  updated_at: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface ProspectData {

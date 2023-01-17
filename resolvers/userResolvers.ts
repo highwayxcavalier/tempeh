@@ -18,7 +18,7 @@ const users = async () => {
 };
 
 const addUser = async (_: any, { input: { username, email } }: any) => {
-  const newUser = new UserModel({ username, email, created_at: new Date() });
+  const newUser = new UserModel({ username, email });
 
   try {
     await newUser.save();

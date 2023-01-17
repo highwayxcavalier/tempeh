@@ -27,6 +27,7 @@ export const types = gql`
     quantity: String!
     tags: [String]
     description: String
+    isExpired: Boolean!
   }
 
   input DeleteInput {

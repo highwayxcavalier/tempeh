@@ -22,7 +22,15 @@ const product = async (_: any, { id }: any) => {
 const addProduct = async (
   _: any,
   {
-    input: { name, expiration_date, storage, quantity, tags, description },
+    input: {
+      name,
+      expiration_date,
+      storage,
+      quantity,
+      tags,
+      description,
+      isExpired,
+    },
   }: any
 ) => {
   const newProduct = new ProductModel({
@@ -32,7 +40,7 @@ const addProduct = async (
     storage,
     quantity,
     tags,
-    created_at: new Date(),
+    isExpired,
   });
 
   try {

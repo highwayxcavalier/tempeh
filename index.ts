@@ -6,6 +6,7 @@ import mongoose from 'npm:mongoose@6.7';
 import { oakCors } from 'https://deno.land/x/cors/mod.ts';
 import { handler } from 'https://deno.land/x/serverless_oak/mod.ts';
 import { config } from './config.ts';
+export { parse } from 'https://deno.land/std/flags/mod.ts';
 
 const app = new Application();
 
@@ -27,5 +28,5 @@ try {
   console.error(error);
 }
 
-console.log('Server start at http://192.168.0.211:8080');
-await app.listen({ port: 8080 });
+const argsPort = parse(Deno.args).port;
+await app.listen({ port: argsPort ?? config.DEFAULT_PORT });

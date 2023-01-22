@@ -6,7 +6,7 @@ import mongoose from 'npm:mongoose@6.7';
 import { oakCors } from 'https://deno.land/x/cors/mod.ts';
 import { handler } from 'https://deno.land/x/serverless_oak/mod.ts';
 import { config } from './config.ts';
-export { parse } from 'https://deno.land/std/flags/mod.ts';
+import { parse } from 'https://deno.land/std/flags/mod.ts';
 
 const app = new Application();
 
@@ -21,7 +21,7 @@ app.use(GraphQLService.routes(), GraphQLService.allowedMethods());
 
 try {
   await mongoose.connect(
-    config.MONGODB_URL ?? 'mongodb://127.0.0.1:27017/tofu'
+    config.MONGODB_URL || 'mongodb://127.0.0.1:27017/tofu'
   );
   console.log(`Connected: ${mongoose.connection.readyState}`);
 } catch (error) {
@@ -29,4 +29,4 @@ try {
 }
 
 const argsPort = parse(Deno.args).port;
-await app.listen({ port: argsPort ?? config.DEFAULT_PORT });
+await app.listen({ port: argsPort || config.DEFAULT_PORT });

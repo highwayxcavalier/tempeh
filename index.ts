@@ -21,7 +21,7 @@ app.use(GraphQLService.routes(), GraphQLService.allowedMethods());
 
 try {
   await mongoose.connect(
-    config.MONGODB_URL || 'mongodb://127.0.0.1:27017/tofu'
+    config.MONGODB_URL ?? 'mongodb://127.0.0.1:27017/tofu'
   );
   console.log(`Connected: ${mongoose.connection.readyState}`);
 } catch (error) {
@@ -29,4 +29,4 @@ try {
 }
 
 const argsPort = parse(Deno.args).port;
-await app.listen({ port: argsPort || config.DEFAULT_PORT });
+await app.listen({ port: argsPort ?? config.DEFAULT_PORT });

@@ -26,5 +26,6 @@ try {
   console.error(error);
 }
 
-const argsPort = parse(Deno.args).port;
-await app.listen({ port: argsPort ?? config.DEFAULT_PORT });
+const DEFAULT_PORT=8000
+const argsPort = parse(Deno.args)?.port;
+await app.listen({ port: argsPort || DEFAULT_PORT });

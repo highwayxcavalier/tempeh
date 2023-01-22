@@ -1,12 +1,11 @@
-import { applyGraphQL } from 'https://deno.land/x/oak_graphql/mod.ts';
-import { Application, Router } from 'https://deno.land/x/oak/mod.ts';
+import { applyGraphQL } from './deps.ts';
+import { Application, Router } from './deps.ts';
 import { types } from './schema/schema.ts';
 import { resolvers } from './resolvers/index.ts';
-import mongoose from 'npm:mongoose@6.7';
-import { oakCors } from 'https://deno.land/x/cors/mod.ts';
-import { handler } from 'https://deno.land/x/serverless_oak/mod.ts';
+import mongoose from 'npm:mongoose@^6.7';
+import { oakCors } from './deps.ts';
 import { config } from './config.ts';
-import { parse } from 'https://deno.land/std/flags/mod.ts';
+import { parse } from './deps.ts';
 
 const app = new Application();
 
@@ -21,6 +20,7 @@ app.use(GraphQLService.routes(), GraphQLService.allowedMethods());
 
 try {
   await mongoose.connect(config.MONGODB_URL);
+
   console.log(`Connected: ${mongoose.connection.readyState}`);
 } catch (error) {
   console.error(error);

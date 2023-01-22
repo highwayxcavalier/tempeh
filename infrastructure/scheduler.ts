@@ -1,6 +1,6 @@
-import { Cron } from 'https://deno.land/x/croner@5.3.4/src/croner.js';
+import { Cron } from '../deps.ts';
 import { ProductModel } from '../data/models/ProductModel.ts';
-import { format } from 'https://deno.land/std@0.173.0/datetime/format.ts';
+import { format } from '../deps.ts';
 
 const checkExpirationDates = async () => {
   await ProductModel.updateMany(

@@ -1,4 +1,4 @@
-import mongoose from 'npm:mongoose@6.7';
+import mongoose from 'npm:mongoose@^6.7';
 import { productSchema } from './ProductSchema.ts';
 
 const { Schema } = mongoose;

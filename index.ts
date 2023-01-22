@@ -4,7 +4,6 @@ import { types } from './schema/schema.ts';
 import { resolvers } from './resolvers/index.ts';
 import mongoose from 'npm:mongoose@^6.7';
 import { oakCors } from './deps.ts';
-import { config } from './config.ts';
 import { parse } from './deps.ts';
 import "https://deno.land/std@0.173.0/dotenv/load.ts";
 

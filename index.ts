@@ -20,9 +20,7 @@ app.use(oakCors()); // Enable CORS for All Routes
 app.use(GraphQLService.routes(), GraphQLService.allowedMethods());
 
 try {
-  await mongoose.connect(
-    config.MONGODB_URL ?? 'mongodb://127.0.0.1:27017/tofu'
-  );
+  await mongoose.connect(config.MONGODB_URL);
   console.log(`Connected: ${mongoose.connection.readyState}`);
 } catch (error) {
   console.error(error);

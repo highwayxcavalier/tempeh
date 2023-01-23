@@ -1,9 +1,9 @@
-import { GQLError } from 'https://deno.land/x/oak_graphql/mod.ts';
-import { UserModel } from '../data/models/UserModel.ts';
+import { GQLError } from "https://deno.land/x/oak_graphql@0.6.4/mod.ts";
+import { UserModel } from "../data/models/UserModel.ts";
 
 const user = async (_: any, { id }: any): Promise<any> => {
   if (!id) {
-    throw new GQLError({ type: 'id is empty' });
+    throw new GQLError({ type: "id is empty" });
   }
   const result = await UserModel.findById(id);
   return result;

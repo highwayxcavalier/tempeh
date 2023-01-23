@@ -1,5 +1,5 @@
-import mongoose from 'npm:mongoose@^6.7';
-import { productSchema } from './ProductSchema.ts';
+import mongoose from "npm:mongoose@^6.7";
+import { productSchema } from "./ProductSchema.ts";
 
 const { Schema } = mongoose;
 
@@ -9,5 +9,5 @@ export const userSchema = new Schema(
     email: String,
     products: [productSchema],
   },
-  { timestamps: true }
+  { timestamps: true },
 );

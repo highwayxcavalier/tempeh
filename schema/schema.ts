@@ -1,4 +1,4 @@
-import { gql } from 'https://deno.land/x/oak_graphql@0.6.4/mod.ts';
+import { gql } from "https://deno.land/x/oak_graphql@0.6.4/mod.ts";
 
 export const types = gql`
   type Product {
@@ -47,11 +47,17 @@ export const types = gql`
     updatedAt: String!
   }
 
+  type FoodItem {
+    name: String!
+    imageUrl: String
+  }
+
   type Query {
     user(id: ID!): User!
     users: [User]
     product(id: ID!): Product
     products: [Product!]!
+    foodData(barcode: String!): FoodItem
   }
 
   type Mutation {

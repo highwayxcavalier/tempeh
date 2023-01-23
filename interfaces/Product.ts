@@ -12,4 +12,9 @@ export interface Product {
   isExpired: boolean;
 }
 
-type Storage = 'fridge' | 'cellar' | 'freezer' | 'pantry';
+type Storage = "fridge" | "cellar" | "freezer" | "pantry";
+
+export interface FoodItem {
+  name: string;
+  imageUrl?: string;
+}

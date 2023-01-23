@@ -1,5 +1,7 @@
-import { GQLError } from 'https://deno.land/x/oak_graphql/mod.ts';
-import { ProductModel } from '../data/models/ProductModel.ts';
+import { GQLError } from "https://deno.land/x/oak_graphql/mod.ts";
+import { fetchFoodData } from "../api/fetchFoodData.ts";
+import { ProductModel } from "../data/models/ProductModel.ts";
+import { FoodItem } from "../interfaces/Product.ts";
 
 const products = async () => {
   try {
@@ -10,7 +12,7 @@ const products = async () => {
   }
 };
 
-const product = async (_: any, { id }: any) => {
+const product = async (_: any, id: string) => {
   try {
     const result = await ProductModel.findById({ _id: id });
     return result;
@@ -31,7 +33,7 @@ const addProduct = async (
       description,
       isExpired,
     },
-  }: any
+  }: any,
 ) => {
   const newProduct = new ProductModel({
     name,
@@ -52,11 +54,24 @@ const addProduct = async (
   return newProduct;
 };
 
-const deleteProduct = async (_: any, { input: { id } }: any) => {
+const deleteProduct = async (
+  _: any,
+  { input: { id } }: any,
+): Promise<{ done: boolean }> => {
   try {
     await ProductModel.findOneAndDelete({ _id: id });
 
     return { done: true };
+  } catch (error) {
+    throw new GQLError(error?.message);
+  }
+};
+
+const foodData = async (_: any, barcode: string): Promise<FoodItem> => {
+  try {
+    const result = await fetchFoodData(barcode);
+
+    return result;
   } catch (error) {
     throw new GQLError(error?.message);
   }
@@ -67,4 +82,5 @@ export const productResolvers = {
   products,
   addProduct,
   deleteProduct,
+  foodData,
 };

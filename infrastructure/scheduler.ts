@@ -1,4 +1,3 @@
-import { Cron } from "../deps.ts";
 import { ProductModel } from "../data/models/ProductModel.ts";
 import { format } from "../deps.ts";
 
@@ -9,4 +8,4 @@ const checkExpirationDates = async () => {
   );
 };
 
-const _scheduler = new Cron("@daily", checkExpirationDates);
+checkExpirationDates();

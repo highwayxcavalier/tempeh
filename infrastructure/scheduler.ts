@@ -17,7 +17,7 @@ const checkExpirationDates = async () => {
   try {
     const result = await ProductModel.updateMany(
       { expiration_date: format(new Date(), "dd-MM-yyyy") },
-      { isExpired: true },
+      { isExpired: true, tags: "expired" },
     );
 
     console.log("Docs matched: ", result.matchedCount);
@@ -28,9 +28,13 @@ const checkExpirationDates = async () => {
   }
 
   try {
+    const checkDate = new Date();
+    checkDate.setDate(checkDate.getDate() + 2);
     const result = await ProductModel.updateMany(
-      { expiration_date: format(new Date(), "dd-MM-yyyy") },
-      { tags: "expired" },
+      {
+        expiration_date: format(checkDate, "dd-MM-yyyy"),
+      },
+      { tags: "expire soon" },
     );
 
     console.log("Docs matched: ", result.matchedCount);

@@ -53,17 +53,17 @@ export const types = gql`
   }
 
   type Recipe {
-    label: String!
+    label: String
     imageUrl: String
-    ingredientsLines: String[]
-    ingredients: Ingredient[]
+    ingredientsLines: [String]
+    ingredients: [Ingredient]
     url: String!
   }
 
   type Ingredient {
     food: String!
-    quantity: Number!
-    measure: Number
+    quantity: Float!
+    measure: String
   }
 
   type Query {
@@ -72,7 +72,7 @@ export const types = gql`
     product(id: ID!): Product
     products: [Product!]!
     foodData(barcode: String!): FoodItem
-    recipes(ingredients: String!): Recipe[]
+    recipes(ingredients: [String!]): [Recipe]
   }
 
   type Mutation {

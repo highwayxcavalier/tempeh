@@ -1,10 +1,8 @@
-import { Recipe } from "../interfaces/Recipe.ts";
+import { Recipe, Recipes } from "../interfaces/Recipe.ts";
 
 export const fetchRecipes = async (
   ingredients: string[],
 ): Promise<Recipe[]> => {
-  const url = "https://api.edamam.com/api/recipes/v2";
-
   try {
     const query = new URLSearchParams({
       "q": ingredients.join(" "),
@@ -14,13 +12,14 @@ export const fetchRecipes = async (
       "random": "true",
     });
 
+    const url = `https://api.edamam.com/api/recipes/v2?${query}`;
     const jsonResponse = await fetch(
-      url + query,
+      url,
     );
 
     const jsonData = await jsonResponse.json();
 
-    return jsonData;
+    return jsonData.hits.map(({ recipe }: Recipes) => recipe);
   } catch (error) {
     throw new Error(error?.message);
   }

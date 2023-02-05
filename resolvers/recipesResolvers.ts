@@ -2,9 +2,12 @@ import { GQLError } from "https://deno.land/x/oak_graphql/mod.ts";
 import { fetchRecipes } from "../api/fetchRecipes.ts";
 import { Recipe } from "../interfaces/Recipe.ts";
 
-const recipes = async (_: any, ingredients: string[]): Promise<Recipe[]> => {
+const recipes = async (
+  _: any,
+  args: { ingredients: string[] },
+): Promise<Recipe[]> => {
   try {
-    const result = await fetchRecipes(ingredients);
+    const result = await fetchRecipes(args.ingredients);
 
     return result;
   } catch (error) {

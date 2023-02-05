@@ -11,3 +11,7 @@ interface Ingredient {
   quantity: number;
   measure?: number;
 }
+
+export interface Recipes {
+  recipe: Recipe[];
+}

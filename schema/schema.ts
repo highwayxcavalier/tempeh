@@ -52,12 +52,27 @@ export const types = gql`
     imageUrl: String
   }
 
+  type Recipe {
+    label: String!
+    imageUrl: String
+    ingredientsLines: String[]
+    ingredients: Ingredient[]
+    url: String!
+  }
+
+  type Ingredient {
+    food: String!
+    quantity: Number!
+    measure: Number
+  }
+
   type Query {
     user(id: ID!): User!
     users: [User]
     product(id: ID!): Product
     products: [Product!]!
     foodData(barcode: String!): FoodItem
+    recipes(ingredients: String!): Recipe[]
   }
 
   type Mutation {

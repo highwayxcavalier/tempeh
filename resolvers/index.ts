@@ -1,8 +1,11 @@
 import { productResolvers } from "./productResolvers.ts";
 import { userResolvers } from "./userResolvers.ts";
+import { recipeResolvers } from "./recipesResolvers.ts";
+
 const { product, products, addProduct, deleteProduct, foodData } =
   productResolvers;
 const { user, addUser, users } = userResolvers;
+const { recipes } = recipeResolvers;
 
 export const resolvers = {
   Query: {
@@ -11,6 +14,7 @@ export const resolvers = {
     user,
     users,
     foodData,
+    recipes,
   },
   Mutation: {
     addProduct,

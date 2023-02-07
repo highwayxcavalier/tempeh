@@ -53,11 +53,15 @@ export const types = gql`
   }
 
   type Recipe {
-    label: String
-    imageUrl: String
+    label: String!
+    image: String
     ingredientsLines: [String]
     ingredients: [Ingredient]
     url: String!
+    source: String
+    calories: Float
+    totalTime: Float
+    mealType: [String]
   }
 
   type Ingredient {

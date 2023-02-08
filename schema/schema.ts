@@ -53,6 +53,7 @@ export const types = gql`
   }
 
   type Recipe {
+    uri: String!
     label: String!
     image: String
     ingredientsLines: [String]

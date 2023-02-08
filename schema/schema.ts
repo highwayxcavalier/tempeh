@@ -78,6 +78,7 @@ export const types = gql`
     products: [Product!]!
     foodData(barcode: String!): FoodItem
     recipes(ingredients: [String!]): [Recipe]
+    recipe(uri: String!): Recipe
   }
 
   type Mutation {

@@ -63,6 +63,7 @@ export const types = gql`
     calories: Float
     totalTime: Float
     mealType: [String]
+    yield: Float
   }
 
   type Ingredient {

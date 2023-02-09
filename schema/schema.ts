@@ -56,7 +56,7 @@ export const types = gql`
     uri: String!
     label: String!
     image: String
-    ingredientsLines: [String]
+    ingredientLines: [String]
     ingredients: [Ingredient]
     url: String!
     source: String

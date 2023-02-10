@@ -3,9 +3,54 @@ import { fetchFoodData } from "../api/fetchFoodData.ts";
 import { ProductModel } from "../data/models/ProductModel.ts";
 import { FoodItem } from "../interfaces/Product.ts";
 
-const products = async () => {
+enum TAGS {
+  EXPIRING_SOON = "expire soon",
+  EXPIRED = "expired",
+}
+
+const products = async (
+  _: any,
+  { isExpiringSoon }: { isExpiringSoon: boolean },
+) => {
   try {
-    const products = await ProductModel.find();
+    let products;
+
+    if (isExpiringSoon) {
+      products = await ProductModel.aggregate([
+        {
+          $match: {
+            tags: { $in: [TAGS.EXPIRING_SOON] },
+          },
+        },
+        {
+          $group: {
+            _id: "$name",
+            docs: {
+              $push: "$$ROOT",
+            },
+          },
+        },
+        {
+          $project: {
+            _id: 0,
+            product: { $arrayElemAt: ["$docs", 0] },
+          },
+        },
+        {
+          $replaceRoot: {
+            newRoot: "$product",
+          },
+        },
+        {
+          $addFields: {
+            id: "$_id",
+          },
+        },
+      ]);
+    } else {
+      products = await ProductModel.find();
+    }
+
     return products;
   } catch (error) {
     throw new GQLError(error?.message);

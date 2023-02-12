@@ -5,7 +5,7 @@ export const fetchRecipes = async (
 ): Promise<Recipe[]> => {
   try {
     const query = new URLSearchParams({
-      "q": ingredients?.join(" "),
+      "q": ingredients.join(" "),
       "app_key": Deno.env.get("API_KEY") || "",
       "app_id": Deno.env.get("API_ID") || "",
       "type": "public",

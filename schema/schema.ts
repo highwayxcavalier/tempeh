@@ -78,7 +78,7 @@ export const types = gql`
     product(id: ID!): Product
     products(isExpiringSoon: Boolean): [Product!]!
     foodData(barcode: String!): FoodItem
-    recipes(ingredients: [String!]): [Recipe]
+    recipes(ingredients: [String!]!): [Recipe]
     recipe(uri: String!): Recipe
   }
 

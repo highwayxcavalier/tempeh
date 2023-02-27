@@ -1,6 +1,6 @@
 import { GQLError } from "https://deno.land/x/oak_graphql/mod.ts";
 import { fetchRecipe, fetchRecipes } from "../api/fetchRecipes.ts";
-import { Recipe } from "../interfaces/Recipe.ts";
+import { Recipe } from "../types/Recipe.ts";
 
 const recipes = async (
   _: any,

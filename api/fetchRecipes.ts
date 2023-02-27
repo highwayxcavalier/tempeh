@@ -1,4 +1,4 @@
-import { Recipe, Recipes } from "../interfaces/Recipe.ts";
+import { Recipe, Recipes } from "../types/Recipe.ts";
 
 export const fetchRecipes = async (
   ingredients: string[],

@@ -1,4 +1,4 @@
-import { FoodItem } from "../interfaces/Product.ts";
+import { FoodItem } from "../types/Product.ts";
 
 export const fetchFoodData = async (
   barcode: string,

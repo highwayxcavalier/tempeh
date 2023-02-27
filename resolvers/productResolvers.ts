@@ -1,7 +1,7 @@
 import { GQLError } from "https://deno.land/x/oak_graphql/mod.ts";
 import { fetchFoodData } from "../api/fetchFoodData.ts";
 import { ProductModel } from "../data/models/ProductModel.ts";
-import { FoodItem } from "../interfaces/Product.ts";
+import { FoodItem } from "../types/Product.ts";
 
 enum TAGS {
   EXPIRING_SOON = "expire soon",
